@@ -1,0 +1,15 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: CLOUD-ZUUL
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+zuul:
+  routes:
+    dhprovider:
+      serviceId: CLOUD-PROVIDER #配置需要路由到的微服务
+      path: /seller/**  #路由路径
+  ignored-services: "*" #需要隐藏的服务名，可以使用通配符，配置之后通过这个微服务名访问就失效了

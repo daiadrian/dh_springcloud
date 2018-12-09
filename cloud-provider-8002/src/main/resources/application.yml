@@ -1,0 +1,38 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: CLOUD-PROVIDER
+      #配置应用名称。spring.application.name 的优先级比 eureka.instance.appname 高
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
+    url: jdbc:mysql://192.168.75.100:3310/auto_genactivity  # 数据库名称
+    username: auto_genactivity
+    password: auto_genactivity
+    dbcp2:
+      min-idle: 1                                           # 数据库连接池的最小维持连接数
+      initial-size: 1                                       # 初始化连接数
+      max-total: 1                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7001/eureka             #指定注册中心地址
+  instance:
+    instance-id: cloud-provider
+    prefer-ip-address: true     #访问路径可以显示IP地址(不使用主机名来定义注册中心的地址，而使用IP地址的形式)
+# springboot 2.0x 处于安全只暴露了actuator的health和info节点，所以需要将actuator的节点暴露出来
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+info:
+  app.name: daiadrian-cloud-provider  #点击服务查看详情info
+  company.name: daiadrian@sina.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
