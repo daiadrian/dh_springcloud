@@ -8,6 +8,10 @@ eureka:
     register-with-eureka: false     #不向注册中心注册自己
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+spring:
+  application:
+    name: dh_eureka
+  profiles: server0
           #serviceUrl指定服务注册中心地址，类型为 HashMap，
           #并设置有一组默认值，默认的Key为 defaultZone；
           #默认的Value为 http://localhost:8761/eureka
@@ -16,3 +20,53 @@ eureka:
           #如果服务注册中心加入了安全验证，
           #这里配置的地址格式为： http://<username>:<password>@localhost:8761/eureka
           #其中 <username> 为安全校验的用户名；<password> 为该用户的密码
+
+# 集群配置
+---
+spring:
+  application:
+    name: dh_eureka
+  profiles: server1
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: eureka7001
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://eureka7002:7002/eureka/,http://eureka7003:7003/eureka/
+
+---
+spring:
+  application:
+    name: dh_eureka
+  profiles: server2
+server:
+  port: 7002
+eureka:
+  instance:
+    hostname: eureka7002
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7003:7003/eureka/
+
+---
+spring:
+  application:
+    name: dh_eureka
+  profiles: server3
+server:
+  port: 7003
+eureka:
+  instance:
+    hostname: eureka7003
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+      defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
+

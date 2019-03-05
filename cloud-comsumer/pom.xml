@@ -11,6 +11,10 @@
 	<artifactId>cloud-comsumer</artifactId>
 	<packaging>jar</packaging>
 
+	<!-- 模块名及描述信息 -->
+	<name>cloud-comsumer</name>
+	<description>Cloud Comsumer</description>
+
 	<dependencies>
 		<!-- 公共模块引入 -->
 		<dependency>
@@ -43,18 +47,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
+	<!--
+        SpringBoot的Maven插件, 能够以Maven的方式为应用提供SpringBoot的支持，可以将
+        SpringBoot应用打包为可执行的jar或war文件, 然后以通常的方式运行SpringBoot应用
+     -->
 	<build>
 		<plugins>
 			<plugin>

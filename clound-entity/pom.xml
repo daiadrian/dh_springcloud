@@ -10,7 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>clound-entity</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <!-- 模块名及描述信息 -->
+    <name>cloud-entity</name>
+    <description>Cloud Entity</description>
 
     <dependencies>
         <dependency>
