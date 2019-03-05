@@ -2,26 +2,24 @@ server:
   port: 7001
 eureka:
   instance:
-    hostname: localhost             #ÉèÖÃµ±Ç°ÊµÀıµÄÖ÷»úÃû³Æ
+    hostname: localhost             #è®¾ç½®å½“å‰å®ä¾‹çš„ä¸»æœºåç§°
   client:
-    fetch-registry: false           #±íÊ¾×Ô¼º¾ÍÊÇ×¢²áÖĞĞÄ£¬Ö°ÔğÊÇÎ¬»¤ÊµÀı£¬²»²Î¼Ó¼ìË÷
-    register-with-eureka: false     #²»Ïò×¢²áÖĞĞÄ×¢²á×Ô¼º
+    fetch-registry: false           #è¡¨ç¤ºè‡ªå·±å°±æ˜¯æ³¨å†Œä¸­å¿ƒï¼ŒèŒè´£æ˜¯ç»´æŠ¤å®ä¾‹ï¼Œä¸å‚åŠ æ£€ç´¢
+    register-with-eureka: false     #ä¸å‘æ³¨å†Œä¸­å¿ƒæ³¨å†Œè‡ªå·±
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 spring:
   application:
     name: dh_eureka
   profiles: server0
-          #serviceUrlÖ¸¶¨·şÎñ×¢²áÖĞĞÄµØÖ·£¬ÀàĞÍÎª HashMap£¬
-          #²¢ÉèÖÃÓĞÒ»×éÄ¬ÈÏÖµ£¬Ä¬ÈÏµÄKeyÎª defaultZone£»
-          #Ä¬ÈÏµÄValueÎª http://localhost:8761/eureka
-          #Èç¹û·şÎñ×¢²áÖĞĞÄÎª¸ß¿ÉÓÃ¼¯ÈºÊ±£¬¶à¸ö×¢²áÖĞĞÄµØÖ·ÒÔ¶ººÅ·Ö¸ô
-
-          #Èç¹û·şÎñ×¢²áÖĞĞÄ¼ÓÈëÁË°²È«ÑéÖ¤£¬
-          #ÕâÀïÅäÖÃµÄµØÖ·¸ñÊ½Îª£º http://<username>:<password>@localhost:8761/eureka
-          #ÆäÖĞ <username> Îª°²È«Ğ£ÑéµÄÓÃ»§Ãû£»<password> Îª¸ÃÓÃ»§µÄÃÜÂë
-
-# ¼¯ÈºÅäÖÃ
+#serviceUrlæŒ‡å®šæœåŠ¡æ³¨å†Œä¸­å¿ƒåœ°å€ï¼Œç±»å‹ä¸º HashMapï¼Œ
+#å¹¶è®¾ç½®æœ‰ä¸€ç»„é»˜è®¤å€¼ï¼Œé»˜è®¤çš„Keyä¸º defaultZoneï¼›
+#é»˜è®¤çš„Valueä¸º http://localhost:8761/eureka
+#å¦‚æœæœåŠ¡æ³¨å†Œä¸­å¿ƒä¸ºé«˜å¯ç”¨é›†ç¾¤æ—¶ï¼Œå¤šä¸ªæ³¨å†Œä¸­å¿ƒåœ°å€ä»¥é€—å·åˆ†éš”
+#å¦‚æœæœåŠ¡æ³¨å†Œä¸­å¿ƒåŠ å…¥äº†å®‰å…¨éªŒè¯ï¼Œ
+#è¿™é‡Œé…ç½®çš„åœ°å€æ ¼å¼ä¸ºï¼š http://<username>:<password>@localhost:8761/eureka
+#å…¶ä¸­ <username> ä¸ºå®‰å…¨æ ¡éªŒçš„ç”¨æˆ·åï¼›<password> ä¸ºè¯¥ç”¨æˆ·çš„å¯†ç 
+#é›†ç¾¤é…ç½®
 ---
 spring:
   application:
@@ -37,7 +35,6 @@ eureka:
     register-with-eureka: false
     serviceUrl:
       defaultZone: http://eureka7002:7002/eureka/,http://eureka7003:7003/eureka/
-
 ---
 spring:
   application:
@@ -53,7 +50,6 @@ eureka:
     register-with-eureka: false
     serviceUrl:
       defaultZone: http://eureka7001:7001/eureka/,http://eureka7003:7003/eureka/
-
 ---
 spring:
   application:
@@ -69,4 +65,3 @@ eureka:
     register-with-eureka: false
     serviceUrl:
       defaultZone: http://eureka7001:7001/eureka/,http://eureka7002:7002/eureka/
-
