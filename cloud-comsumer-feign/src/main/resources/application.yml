@@ -8,8 +8,33 @@ eureka:
 feign:
   hystrix:
     enabled: true
+  # Feign 支持对请求和响应进行GZIP压缩，以减少通信过程中的性能损耗
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+    response:
+      enabled: true # 开启响应压缩
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小下限
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+CLOUD-PROVIDER:
+  ribbon:
+    ConnectTimeout: 250            # Ribbon的连接超时时间
+    ReadTimeout: 1000              # Ribbon的数据读取超时时间
+    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+    MaxAutoRetriesNextServer: 1    # 切换实例的重试次数
+    MaxAutoRetries: 1              # 对当前实例的重试次数
+hystrix:
+  command:
+  	default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMillisecond: 6000

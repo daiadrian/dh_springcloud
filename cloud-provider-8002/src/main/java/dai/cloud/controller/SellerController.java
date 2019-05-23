@@ -1,7 +1,6 @@
 package dai.cloud.controller;
 
 import com.cloud.entity.Seller;
-import dai.cloud.mapper.SellerMapper;
 import dai.cloud.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

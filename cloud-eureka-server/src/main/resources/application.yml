@@ -1,8 +1,13 @@
 server:
   port: 7001
 eureka:
+  server:
+    enable-self-preservation: false     # 关闭自我保护模式（缺省为打开）
+    eviction-interval-timer-in-ms: 1000 # 扫描失效服务的间隔时间（缺省为60*1000ms）
   instance:
     hostname: localhost             #设置当前实例的主机名称
+    lease-expiration-duration-in-seconds: 90  #服务失效时间，默认值90秒
+    lease-renewal-interval-in-seconds: 30     #服务续约(renew)的间隔，默认为30秒
   client:
     fetch-registry: false           #表示自己就是注册中心，职责是维护实例，不参加检索
     register-with-eureka: false     #不向注册中心注册自己

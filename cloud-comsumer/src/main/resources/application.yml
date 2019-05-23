@@ -2,6 +2,25 @@ server:
   port: 8010
 eureka:
   client:
-    register-with-eureka: false #�������Լ���ע�ᵽeureka��
+    register-with-eureka: false   #消费者自己不注册到Eureka
     serviceUrl:
       defaultZone: http://localhost:7001/eureka
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true # 开启Spring Cloud的重试功能
+CLOUD-PROVIDER:
+  ribbon:
+    ConnectTimeout: 250            # Ribbon的连接超时时间
+    ReadTimeout: 1000              # Ribbon的数据读取超时时间
+    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+    MaxAutoRetriesNextServer: 1    # 切换实例的重试次数
+    MaxAutoRetries: 1              # 对当前实例的重试次数
+hystrix:
+  command:
+  	default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMillisecond: 6000 #设置hystrix的超时时间为6000ms,Ribbon的超时时间一定要小于Hystix的超时时间
